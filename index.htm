@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oops~</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            color: #fff;
+            transition: background-color 1s ease;
+            overflow: hidden;
+            padding-right: 12%;
+        }
+
+        h1 {
+            font-size: 4em;
+            line-height: 0.1;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin: 0;
+            margin-bottom: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .typing-effect {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid white;
+            animation: typing 1s steps(20, end), blink-caret 0.5s step-end infinite;
+            display: inline-block;
+            margin: 0;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: white; }
+        }
+    </style>
+</head>
+<body>
+    <h1>~~~</h1>
+    <h1>Oooops ~~</h1>
+    <p><b>请于外置浏览器应用中打开</b></p>
+<br></br>
+
+    <div id="countdown" style="font-size: 0.8em;"></div>
+    <script>
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function updateCountdown(seconds) {
+            document.getElementById('countdown').innerText = `页面将在 ${seconds} 秒后重试载入`;
+        }
+
+        let seconds = 8;
+        const countdownInterval = setInterval(() => {
+            updateCountdown(seconds);
+            if (seconds <= 0) {
+                clearInterval(countdownInterval);
+                window.location.href = 'https://open.kekli.cn';
+            }
+            seconds--;
+        }, 1000);
+
+        setInterval(() => {
+            document.body.style.backgroundColor = getRandomColor();
+        }, 2000);
+    </script>
+</body>
+</html>
